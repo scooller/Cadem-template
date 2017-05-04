@@ -19,11 +19,13 @@ a,button{
 	top: 50%;
 	position: absolute;
 }
+.gral-content{
+	padding: 0!important;
+}
 #gral-menu{
 	list-style: none;
 	padding: 0;
 	display: flex;
-	margin: 0 -15px;
 	img{
 		min-width: 200px;
 	}
@@ -51,6 +53,44 @@ a,button{
 		color: $blanco;
 		background-color: $azul;
 	}
+}
+.carousel-inner{
+	> .item{
+		min-height: 500px;
+		.row > div[class^='col']{
+			padding: 0!important;
+		}
+	}	
+	div[class^="box"]{
+		position: relative;
+		display: block;
+		padding: 10px;
+		.title{
+			width: 40%;
+			margin: 0;
+			text-align: left;
+    		left: 5%;
+			color: $blanco;
+		}
+	}
+	.box{
+		min-height: 500px;
+	}
+	.box-mini{
+		min-height: 250px;
+	}
+}
+.carousel-control{
+	background-image: none!important;
+}
+.carousel-control:before{
+	background-color: $azul;
+}
+.verde{
+	background-color: $verde;
+}
+.azul{
+	background-color: $azul;
 }
 /* Media Mobile */
 @media (max-width: 480px) {

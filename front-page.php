@@ -2,15 +2,26 @@
 <div id="carousel-home" class="carousel slide" data-ride="carousel">
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <div class="carousel-caption">
-        ...
-      </div>
-    </div>
-    <div class="item">
-      <div class="carousel-caption">
-        ...
-      </div>
+    <div class="item active">      
+      
+		<div class="row">
+		<div class="col-sm-4">
+			<div class="box verde"></div>
+		</div>
+		<div class="col-sm-4">
+			<div class="box-mini azul"><h4 class="v-align title">NUEVA ENCUESTA PLAZA PÚBLICA</h4></div>
+			<div class="box-mini verde">
+				<h4>Las preferencias laborales de los millennials.</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="box-mini verde"><h4 class="v-align title">MUJERES EN LAS EMPRESAS</h4></div>
+			<div class="box-mini azul"><h4 class="v-align title">MARCAS CIUDADANAS</h4></div>
+		</div>
+		</div>      
+      
+
     </div>
   </div>
 
