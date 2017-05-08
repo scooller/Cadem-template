@@ -2,7 +2,9 @@
 $verde:#80b123;
 $azul:#0055a4;
 $verde:#61911f;
+$fucia:#881781;
 $gris:#616161;
+$gris-oscuro:#202020;
 $blanco:#fff;
 $negro:#000;
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
@@ -28,7 +30,13 @@ a,button{
 }
 section{
 	height: 100%;
-	>  div[class^="col-"]{
+	> .container{
+		height: 100%;
+		> .row{
+			height: 100%;			
+		}
+	}
+	div[class^="col-"]{
 		height: 100%;
 	}
 	.title{
@@ -36,19 +44,107 @@ section{
     	left: 0;
     	right: 0;
     	text-align: center;
-		color: $blanco;
-		font-weight: 300;
+		color: $blanco;		
 		small{
 			display: block;
 			font-weight: 400;
 			color: inherit;
+			font-size: 57%;
 		}
 		b{
 			font-weight: 700;
 		}
 	}
+	.txtlft{
+		text-align: left;
+	}
 	.txt{
 		color: $blanco;
+	}
+}
+section.big{
+	font-size: 2rem;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	.title{
+		font-size: 6rem;
+	}
+}
+section.mini{
+	height: 70%;
+}
+/*
+  __  __                   
+ |  \/  |                  
+ | \  / | __ _ _ __   __ _ 
+ | |\/| |/ _` | '_ \ / _` |
+ | |  | | (_| | |_) | (_| |
+ |_|  |_|\__,_| .__/ \__,_|
+              | |          
+              |_|          
+*/
+$gradient:56.19%;
+section.mapa{
+	min-height: 80%;
+	height: auto;
+	color: $blanco;
+	font-size: 1.6rem;
+	margin: 0 -15px;
+	background: -moz-linear-gradient(left, $gris-oscuro 0%, $gris-oscuro $gradient, $gris $gradient, $gris 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, $gris-oscuro), color-stop($gradient, $gris-oscuro), color-stop($gradient, $gris), color-stop(100%, $gris));
+	background: -webkit-linear-gradient(left, $gris-oscuro 0%, $gris-oscuro $gradient, $gris $gradient, $gris 100%);
+	background: -o-linear-gradient(left, $gris-oscuro 0%, $gris-oscuro $gradient, $gris $gradient, $gris 100%);
+	background: -ms-linear-gradient(left, $gris-oscuro 0%, $gris-oscuro $gradient, $gris $gradient, $gris 100%);
+	background: linear-gradient(to right, $gris-oscuro 0%, $gris-oscuro $gradient, $gris $gradient, $gris 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gris-oscuro', endColorstr='$gris', GradientType=1 );
+	a{
+		color: $blanco;
+	}
+	.title{
+		font-size: 3rem;
+		text-align: left;
+		margin: 0px auto 40px;
+	}
+	.logo.svg{
+		width: 60%;
+		margin: 30px 0;
+	}
+	.logo.svg path{
+		fill:#c3c3c3;
+	}
+	.map{
+		margin-top: 30px;		
+		iframe{
+			margin-top: 20px;
+		}
+	}
+	.row.mini{
+		width: 90%;
+		margin: 0 auto;
+	}
+	.nf-form-title,.nf-form-fields-required,.nf-error-msg{
+		display: none;
+	}
+	.nf-form-cont{
+		margin-top: 40px;
+	}
+	.ninja-forms-field{
+		border-radius: 20px;
+		font-size: 2rem;
+	}
+	.submit-container{
+		display: inline;
+		bottom: -5px;
+		position: absolute;
+		right: 15px;
+		input[type="button"]{
+			color: #fff;
+			background-color: #9cc849;
+			font-size: 2rem;
+			padding: 6px 30px;
+		}
 	}
 }
 #gral-menu{
@@ -109,12 +205,45 @@ section{
 		}
 	}
 	.box{
+		color: $blanco;
 		min-height: 500px;
 	}
 	.box-mini{
+		color: $blanco;
 		min-height: 250px;
 	}
+	.sub-title{
+		color: $blanco;
+    	padding-left: 40px;
+	}
+	.bg{
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	.bg.fix{
+		background-attachment: fixed;
+		background-size: 38%;
+    	background-position: left top;
+	}
 }
+/*
+  ______              _           
+ |  ____|            | |          
+ | |__ ___  _ __   __| | ___  ___ 
+ |  __/ _ \| '_ \ / _` |/ _ \/ __|
+ | | | (_) | | | | (_| | (_) \__ \
+ |_|  \___/|_| |_|\__,_|\___/|___/
+                                  
+                                  
+*/
+#plaza{
+	background-image: url(../img/dummy/cademcl-home-fotos_11.png);	
+}
+#cademonline{
+	background-image: url(../img/dummy/cademcl-home-fotos_12.png);
+}
+/* // */
 .carousel{
 	margin: 0 -15px;
 }
@@ -133,8 +262,18 @@ section{
 .verde{
 	background-color: $verde;
 }
+.fucia{
+	background-color: $fucia;
+	color: $blanco;
+}
 .gris{
 	background-color: $gris;
+}
+.gris-oscuro{
+	background-color: $gris-oscuro;
+}
+.light{
+	font-weight: 300!important;
 }
 /* Media Mobile */
 @media (max-width: 480px) {
