@@ -36,7 +36,7 @@ function theme_enqueue() {
 	wp_enqueue_style( 'general-style', get_template_directory_uri() .'/style.css', array( ) );
 	wp_enqueue_style( 'sass-style', get_template_directory_uri() .'/css/general.css', array( ) );
 }
-function enqueue_my_styles(){
+function enqueue_my_styles(){	
 	wp_enqueue_style( 'bootstrap-style', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', array( ), '3.3.7' );
 	wp_enqueue_style( 'fontawesome-style', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array( ), '4.7.0' );
 	wp_enqueue_style( 'fancybox-style', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css', array( ), '2.1.5' );

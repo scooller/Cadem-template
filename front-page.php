@@ -35,4 +35,30 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<section class="row">
+	<div class="col-md-3 azul">
+		<h2 class="v-align title">Nuestros Productos</h2>
+	</div>
+	<div class="col-md-3 gris">
+		<h2 class="v-align title">Lorem ipsum</h2>
+	</div>
+	<div class="col-md-3 azul">
+		<h4 class="v-align title">
+			CONSUMIDORES Y SEGMENTACIÓN<br>
+			SHOPPER<br>
+			CALIDAD DE SERVICIO
+		</h4>
+	</div>
+	<div class="col-md-3 gris">
+		<h2 class="v-align title">Lorem ipsum</h2>
+	</div>
+</section>
+<section class="row verde">
+	<div class="col-md-6">
+		<h2 class="title v-align"><b>Plaza Pública</b><small>El radar político de Chile</small></h2>
+	</div>
+	<div class="col-md-6">
+		<div class="v-align txt">Lorem ipsum dolor sit ipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen</div>
+	</div>
+</section>
 <?php get_footer(); ?> 
