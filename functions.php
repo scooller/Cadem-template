@@ -19,6 +19,67 @@ if( function_exists('acf_add_options_page') ) {
 		'icon_url'		=> 'dashicons-hammer'
 	));
 }
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+	register_post_type( 'equipo',
+		array(
+			'labels' => array(
+				'name' => __( 'Equipo', 'cadem' ),
+				'singular_name' => __( 'Equipo', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => false,
+			'taxonomies' => array('category'),
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	//--
+	register_post_type( 'producto',
+		array(
+			'labels' => array(
+				'name' => __( 'Productos', 'cadem' ),
+				'singular_name' => __( 'Producto', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => false,
+			'taxonomies' => array('category'),
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	//--
+}
+function custom_post_css() {
+	wp_enqueue_style( 'fontello', get_template_directory_uri() .'/fontello/css/fontello.css', array( ) );
+	echo "<style type='text/css' media='screen'>
+        #adminmenu li#menu-posts-equipo div.wp-menu-image:before {
+            font-family:  fontello !important;
+            content: '\\e803';
+		}
+		#adminmenu li#menu-posts-producto div.wp-menu-image:before {
+            font-family:  fontello !important;
+            content: '\\e800';
+		}
+    </style>";
+}
+add_action('admin_head', 'custom_post_css');
 
 function theme_enqueue() {	
 	wp_deregister_script('jquery');
