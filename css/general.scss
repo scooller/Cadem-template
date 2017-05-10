@@ -107,7 +107,7 @@ section.mini{
               |_|          
 */
 $gradient:56.19%;
-section.mapa{
+footer{
 	min-height: 10%;
 	height: auto;
 	color: $blanco;
@@ -119,20 +119,12 @@ section.mapa{
 	.title{
 		font-size: 3rem;
 		text-align: left;
-		margin: 0px auto 40px;
 	}
 	.logo.svg{
 		width: 60%;
-		margin: 30px 0;
 	}
 	.logo.svg path{
 		fill:#c3c3c3;
-	}
-	.map{
-		margin-top: 30px;		
-		iframe{
-			margin-top: 20px;
-		}
 	}
 	.blanco{
 		color: $negro;
@@ -142,16 +134,40 @@ section.mapa{
 		margin: 0 auto;
 	}
 	.col-sm-6{
-	    display: flex;
 		height: 100%;
 	}
-	.col-flex{
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		text-align: center;
+	table{
+		width: 100%;
 		height: 100%;
-		padding: 20px 0;
+		td{
+			padding: 25px 0;
+			vertical-align: middle;
+			strong{
+				display: block;
+				color: $blanco;
+			}
+			a{
+				color: transparentize($blanco,.6);
+				i{
+					color: $blanco;
+				}
+			}
+			a:hover{
+				color: $blanco;
+			}
+			title{
+				margin: 0;
+			}
+			.btn{
+				border: 1px solid $blanco;
+				color: $blanco;
+				border-radius: 0;
+			}
+			.btn:hover{
+				color: transparentize($negro,.6);
+				background-color: $blanco;
+			}
+		}
 	}
 	.nf-form-title,.nf-form-fields-required,.nf-error-msg{
 		display: none;
