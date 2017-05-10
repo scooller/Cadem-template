@@ -1,7 +1,7 @@
 /* Scss Document */
 $verde:#80b123;
 $azul:#0055a4;
-$verde:#61911f;
+$verde:#9cc849;
 $fucia:#881781;
 $gris:#616161;
 $gris-oscuro:#202020;
@@ -74,7 +74,7 @@ section.big{
 	}
 	a.ir{
 		position: absolute;
-		bottom: 20px;
+		bottom: 15%;
 		background-color: transparent;
 		color: $blanco;
 		left: 0;
@@ -97,14 +97,32 @@ section.mini{
 	height: 70%;
 }
 /*
-  __  __                   
- |  \/  |                  
- | \  / | __ _ _ __   __ _ 
- | |\/| |/ _` | '_ \ / _` |
- | |  | | (_| | |_) | (_| |
- |_|  |_|\__,_| .__/ \__,_|
-              | |          
-              |_|          
+  _  _    ___  _  _   
+ | || |  / _ \| || |  
+ | || |_| | | | || |_ 
+ |__   _| | | |__   _|
+    | | | |_| |  | |  
+    |_|  \___/   |_|  
+                      
+                      
+*/
+.page404 .container{
+	text-align: center;
+	.title{
+		font-size: 10rem;
+		margin: 10px 0 20px;
+		color: $negro;
+	}
+}
+/*
+  ______          _            
+ |  ____|        | |           
+ | |__ ___   ___ | |_ ___ _ __ 
+ |  __/ _ \ / _ \| __/ _ \ '__|
+ | | | (_) | (_) | ||  __/ |   
+ |_|  \___/ \___/ \__\___|_|   
+                               
+                                       
 */
 $gradient:56.19%;
 footer{
@@ -121,7 +139,7 @@ footer{
 		text-align: left;
 	}
 	.logo.svg{
-		width: 60%;
+		width: 100%;
 	}
 	.logo.svg path{
 		fill:#c3c3c3;
@@ -140,8 +158,8 @@ footer{
 		width: 100%;
 		height: 100%;
 		td{
-			padding: 25px 0;
-			vertical-align: middle;
+			padding: 25px 10px;
+			vertical-align: top;
 			strong{
 				display: block;
 				color: $blanco;
@@ -158,16 +176,21 @@ footer{
 			title{
 				margin: 0;
 			}
-			.btn{
+			a.btn{
 				border: 1px solid $blanco;
 				color: $blanco;
 				border-radius: 0;
+				width: 80%;
 			}
-			.btn:hover{
+			a.btn:hover{
 				color: transparentize($negro,.6);
 				background-color: $blanco;
 			}
 		}
+	}
+	.nf-form-content nf-fields-wrap nf-field:first-child{
+		position: relative;
+		z-index: 1;
 	}
 	.nf-form-title,.nf-form-fields-required,.nf-error-msg{
 		display: none;
@@ -178,17 +201,28 @@ footer{
 	}
 	.submit-container{
 		display: inline;
-		bottom: -5px;
+		bottom: 20px;
 		position: absolute;
-		right: 15px;
+		right: 26px;
+		z-index: 100;
 		input[type="button"]{
-			color: #fff;
-			background-color: #9cc849;
+			color: $blanco;
+			background-color: $verde;
 			font-size: 2rem;
 			padding: 6px 30px;
 		}
 	}
 }
+/*
+  __  __                  
+ |  \/  |                 
+ | \  / | ___ _ __  _   _ 
+ | |\/| |/ _ \ '_ \| | | |
+ | |  | |  __/ | | | |_| |
+ |_|  |_|\___|_| |_|\__,_|
+                          
+                          
+*/
 #gral-menu{
 	list-style: none;
 	padding: 0;
@@ -196,7 +230,8 @@ footer{
 	display: flex;
 	flex-direction: row;
 	img{
-		min-width: 200px;
+		min-width: 100px;
+		margin-left: 20px;
 	}
 	li{
 		flex-direction: column;
@@ -265,6 +300,16 @@ footer{
 		background-color: $azul;
 	}
 }
+/*
+   _____ _ _     _           
+  / ____| (_)   | |          
+ | (___ | |_  __| | ___ _ __ 
+  \___ \| | |/ _` |/ _ \ '__|
+  ____) | | | (_| |  __/ |   
+ |_____/|_|_|\__,_|\___|_|   
+                             
+                             
+*/
 .carousel-inner{
 	> .item{
 		min-height: 500px;
@@ -306,6 +351,24 @@ footer{
 		background-attachment: fixed;
 		background-size: 40%;
     	background-position: left top;
+	}
+}
+/*
+  _____                                
+ |  __ \                               
+ | |__) |__ _ __ ___  ___  _ __   __ _ 
+ |  ___/ _ \ '__/ __|/ _ \| '_ \ / _` |
+ | |  |  __/ |  \__ \ (_) | | | | (_| |
+ |_|   \___|_|  |___/\___/|_| |_|\__,_|
+                                       
+                                       
+*/
+#equipo{
+	.persona{
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: cover;
+		height: 40%;
 	}
 }
 /*

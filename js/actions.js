@@ -7,6 +7,6 @@ $(function() {
 	$('.svg').inlineSVG();
 });
 function reSize(){
-	var $iframeW=$('.mapa .map').width();
-	$('.mapa iframe').width($iframeW);
+	var $colH=$('footer .suscribir').height();
+	$('footer .suscribir > .col-sm-6').height($colH);
 }

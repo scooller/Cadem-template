@@ -30,8 +30,7 @@ function create_post_type() {
 			'menu_icon' => "",
 			'menu_position' => 5,
 			'public' => true,
-			'has_archive' => false,
-			'taxonomies' => array('category'),
+			'has_archive' => true,
 			'supports' => array (
 				'title',
 				'author',

@@ -4,7 +4,7 @@
 			<table>
 				<tr>
 					<td><img src="<?php bloginfo('template_url'); ?>/img/logo-cadem-plaza-publica.png" class="logo"></td>
-					<td><p>Ingresa tu correo electrónico para recibir información, datos y análisis que ofrece Plaza Pública Cadem.</p></td>
+					<td width="65%" align="right"><p>Ingresa tu correo electrónico para recibir información, datos y análisis que ofrece Plaza Pública Cadem.</p></td>
 				</tr>
 			</table>
 		</div>
@@ -43,9 +43,14 @@
 		<div class="col-sm-6">
 			<table>
 				<tr>
-					<td><a href="#" class="btn">VER MAPA</a></td>
-					<td><a href="#" class="btn">TRABAJA CON NOSOTROS</a></td>
-					<td><img src="<?php bloginfo('template_url'); ?>/img/logo-cadem.svg" class="logo svg"></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td align="right" width="15%"><img src="<?php bloginfo('template_url'); ?>/img/logo-cadem.svg" class="logo svg"></td>
+				</tr>
+				<tr>
+					<td align="center"><a href="#" class="btn">VER MAPA</a></td>
+					<td align="center"><a href="#" class="btn">TRABAJA CON NOSOTROS</a></td>
+					<td>&nbsp;</td>
 				</tr>
 			</table>
 		</div>	

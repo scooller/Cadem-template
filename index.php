@@ -1,6 +1,6 @@
 ﻿<?php get_header(); ?>
 <script type="text/javascript">
-	window.location.href="<?php bloginfo('url'); ?>";
+	//window.location.href="<?php bloginfo('url'); ?>";
 </script>
 <section class="single">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); $ID=get_the_ID();
@@ -11,8 +11,6 @@
 		<?php the_excerpt(); ?>
 		</div>
 	</a></div>
-<?php endwhile; else: ?>
-	...
-<?php endif; ?>
+<?php endwhile; endif; ?>
 </section>
 <?php get_footer(); ?> 

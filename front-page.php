@@ -6,7 +6,7 @@
       
 		<div class="row">
 		<div class="col-sm-4">
-			<div class="box verde bg fix" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home-fotos_03.png)">
+			<div class="box verde bg fix" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_03.png)">
 				<h1 class="big sub-title v-align"><strong>42 años</strong> en el mercado<br>
 				120 profesionales<br>
 				Panel de <strong>4000</strong> participantes</h1>
