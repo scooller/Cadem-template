@@ -310,47 +310,83 @@ footer{
                              
                              
 */
-.carousel-inner{
-	> .item{
-		min-height: 500px;
-		.row > div[class^='col']{
-			padding: 0!important;
+#carousel-home{
+	.carousel-control{
+		overflow: hidden;
+		span{
+			background-color: $azul;
+			width: 150px;
+			height: 160px;
+			top: 50%;
+			transform: translateY(-50%);
 		}
-	}	
-	div[class^="box"]{
-		position: relative;
-		display: block;
-		padding: 10px;
-		.title{
-			width: 40%;
-			margin: 0;
-			text-align: left;
-    		left: 5%;
+		span:before{
+			margin-top: 68px;
+    		display: block;
+		}
+	}
+	.carousel-control.left{
+		span{
+			border-top-right-radius: 50%;
+			border-bottom-right-radius: 50%;
+			left: -50px;
+		}
+		span:before{
+			margin-left: 40px;
+		}
+	}
+	.carousel-control.right{
+		span{
+			border-top-left-radius: 50%;
+			border-bottom-left-radius: 50%;
+			right: -50px;
+		}
+		span:before{
+			margin-right: 40px;
+		}
+	}
+	.carousel-inner{
+		> .item{
+			min-height: 500px;
+			.row > div[class^='col']{
+				padding: 0!important;
+			}
+		}	
+		div[class^="box"]{
+			position: relative;
+			display: block;
+			padding: 10px;
+			.title{
+				width: 40%;
+				margin: 0;
+				text-align: left;
+				left: 5%;
+				color: $blanco;
+			}
+		}
+		.box{
 			color: $blanco;
+			min-height: 500px;
 		}
-	}
-	.box{
-		color: $blanco;
-		min-height: 500px;
-	}
-	.box-mini{
-		color: $blanco;
-		min-height: 250px;
-		padding: 20px!important;
-	}
-	.sub-title{
-		color: $blanco;
-    	padding-left: 40px;
-	}
-	.bg{
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-	}
-	.bg.fix{
-		background-attachment: fixed;
-		background-size: 40%;
-    	background-position: left top;
+		.box-mini{
+			color: $blanco;
+			min-height: 250px;
+			padding: 20px!important;
+		}
+		.sub-title{
+			color: $blanco;
+			padding-left: 40px;
+		}
+		.bg{
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+		}
+		.bg.fix{
+			background-attachment: fixed;
+			background-size: 40%;
+			background-position: left top;
+		}
 	}
 }
 /*
@@ -445,7 +481,7 @@ footer{
 .verde{
 	background-color: $verde;
 }
-.fucia{
+.fucsia{
 	background-color: $fucia;
 	color: $blanco;
 }
