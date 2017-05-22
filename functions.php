@@ -42,16 +42,60 @@ function create_post_type() {
 		)
 	);
 	//--
-	register_post_type( 'producto',
+	register_post_type( 'encuestas',
 		array(
 			'labels' => array(
-				'name' => __( 'Productos', 'cadem' ),
-				'singular_name' => __( 'Producto', 'cadem' )
+				'name' => __( 'Encuestas', 'cadem' ),
+				'singular_name' => __( 'Encuesta', 'cadem' )
 			),
 			'menu_icon' => "",
 			'menu_position' => 5,
 			'public' => true,
-			'has_archive' => false,
+			'has_archive' => true,
+			'taxonomies' => array('category'),
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	//--
+	register_post_type( 'datos-sociales',
+		array(
+			'labels' => array(
+				'name' => __( 'Datos Sociales', 'cadem' ),
+				'singular_name' => __( 'Datos Sociales', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => true,
+			'taxonomies' => array('category'),
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	//--
+	register_post_type( 'videos',
+		array(
+			'labels' => array(
+				'name' => __( 'Videos', 'cadem' ),
+				'singular_name' => __( 'Video', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => true,
 			'taxonomies' => array('category'),
 			'supports' => array (
 				'title',
@@ -72,7 +116,15 @@ function custom_post_css() {
             font-family:  fontello !important;
             content: '\\e803';
 		}
-		#adminmenu li#menu-posts-producto div.wp-menu-image:before {
+		#adminmenu li#menu-posts-encuestas div.wp-menu-image:before {
+            font-family:  fontello !important;
+            content: '\\e80a';
+		}
+		#adminmenu li#menu-posts-datos-sociales div.wp-menu-image:before {
+            font-family:  fontello !important;
+            content: '\\e804';
+		}
+		#adminmenu li#menu-posts-videos div.wp-menu-image:before {
             font-family:  fontello !important;
             content: '\\e800';
 		}
@@ -102,7 +154,7 @@ function enqueue_my_styles(){
 	wp_enqueue_script( 'fancybox-helper-media', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js', array( 'jquery' ), '1.0.5', true );
 	wp_enqueue_script( 'masonry', '//cdnjs.cloudflare.com/ajax/libs/masonry/4.2.0/masonry.pkgd.min.js', array( 'jquery' ), '4.2.0', true );
 	wp_enqueue_script( 'svg-inline', get_template_directory_uri() .'/js/jquery.inlinesvg.min.js', array( 'jquery' ), '2.0.0', true );
-	wp_enqueue_script( 'custom', get_template_directory_uri() .'/js/actions.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'custom', get_template_directory_uri() .'/js/actions.min.js', array( 'jquery' ), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue' );
 add_action( 'wp_footer','enqueue_my_styles', 10);

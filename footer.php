@@ -3,7 +3,7 @@
 		<div class="col-sm-6">
 			<table>
 				<tr>
-					<td><img src="<?php bloginfo('template_url'); ?>/img/logo-cadem-plaza-publica.png" class="logo"></td>
+					<td><img src="<?php bloginfo('template_url'); ?>/img/logo-plaza.svg" class="publica svg"></td>
 					<td width="65%" align="right"><p>Ingresa tu correo electrónico para recibir información, datos y análisis que ofrece Plaza Pública Cadem.</p></td>
 				</tr>
 			</table>
@@ -12,9 +12,10 @@
 			<table>
 				<tr>
 					<td><?php 
-			if (function_exists('ninja_forms_display_form')):
-				ninja_forms_display_form(1);
-			endif;
+			/*if (function_exists('ninja_forms_display_form')):
+				ninja_forms_display_form(1);				
+			*/
+			Ninja_Forms()->display( 1 );
 			?></td>
 				</tr>
 			</table>
@@ -36,7 +37,7 @@
 					</a></td>
 					<td><strong>Redes Sociales</strong>
 					<a href="#" target="_blank"><i class="icon-facebook-1"></i> Twitter</a><br>
-					<a href="#" target="_blank"><i class="icon-twitter"></i> Facebook</a></td>
+					<a href="#" target="_blank"><i class="icon-twitter-bird"></i> Facebook</a></td>
 				</tr>
 			</table>
 		</div>
