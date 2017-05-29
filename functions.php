@@ -234,6 +234,39 @@ function fix_svg_thumb_display() {
     }
   </style>';
 }
+function rev_str_split($string,$split_length=1){
+    $sign = (($split_length<0)?-1:1);
+    $strlen = strlen($string);
+    $split_length = abs($split_length);
+    if ( ($split_length==0) || ($strlen==0) ){
+            $result = false;
+            //$result[] = "";
+    }
+    elseif ($split_length >= $strlen){
+        $result[] = $string;
+    }
+    else {
+        $length = $split_length;
+        for ($i=0; $i<$strlen; $i++){
+            $i=(($sign<0)?$i+$length:$i);
+            $result[] = substr($string,$sign*$i,$length);
+            $i--;
+            $i=(($sign<0)?$i:$i+$length);
+            if ( ($i+$split_length) > ($strlen) ){
+                $length = $strlen-($i+1);
+            }
+            else {
+                $length = $split_length;
+            }
+        }
+    }
+    return $result;
+}
+function my_acf_init() {	
+	acf_update_setting('google_api_key', 'AIzaSyBTCeaR3cRNl1c4-YbDODXTqGwol-0lxH8');
+}
+add_action('acf/init', 'my_acf_init');
+
 add_action('admin_head', 'fix_svg_thumb_display');
 function cc_mime_types($mimes) {
   $mimes['svg'] = 'image/svg+xml';

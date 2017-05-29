@@ -1,37 +1,32 @@
 ﻿<?php get_header(); ?>
 <?php get_template_part( 'slider' ); ?>
+<?php
+$productoID = 97;
+//--
+$query = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'p' => $productoID ));
+if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
+?>
 <section class="row mini">
 	<div class="col-md-3 col-sm-12 azul">
-		<h2 class="v-align title bold">NUESTROS PRODUCTOS <i class="icon-angle-right"></i></h2>
+		<h2 class="v-align title bold"><?php the_title(); ?> <i class="icon-angle-right"></i>
+			<?php the_content(); ?>
+		</h2>
 	</div>
-	<div class="col-md-3 col-sm-4 over bg" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_09.png)">
-		<h2 class="v-align title light">MARKETING</h2>
-		<ul class="v-align list">
-			<li><a href="#">Loren Ipsum</a></li>
-			<li><a href="#">Loren Ipsum</a></li>
-			<li><a href="#">Loren Ipsum</a></li>
-		</ul>
+	<?php 
+	$pages_child = new WP_Query(array('post_type' => 'page', 'posts_per_page' => -1, 'post_parent' => $productoID,'order' => 'ASC','orderby' => 'menu_order' ));
+	if ( $pages_child->have_posts() ): while ( $pages_child->have_posts() ): $pages_child->the_post(); $ChID=$post->ID;
+		$img = wp_get_attachment_image_src( get_post_thumbnail_id($ChID), 'full' );
+	?>
+	<div class="col-md-3 col-sm-4 over bg trans" style="background-image: url(<?php echo $img[0]; ?>)">
+		<h2 class="v-align title light"><?php the_title(); ?></h2>
+		<?php the_content(); ?>
 		<div class="bg-color azul"></div>
 	</div>
-	<div class="col-md-3 col-sm-4 over bg" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_10.png)">
-		<h2 class="v-align title light">CUALITATIVO</h2>
-		<ul class="v-align list">
-			<li><a href="#">Loren Ipsum</a></li>
-			<li><a href="#">Loren Ipsum</a></li>
-			<li><a href="#">Loren Ipsum</a></li>
-		</ul>
-		<div class="bg-color azul"></div>
-	</div>
-	<div class="col-md-3 col-sm-4 over bg" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_11.png)">
-		<h2 class="v-align title light">EXPERIENCIA DE USUARIO</h2>
-		<ul class="v-align list">
-			<li><a href="#">Loren Ipsum</a></li>
-			<li><a href="#">Loren Ipsum</a></li>
-			<li><a href="#">Loren Ipsum</a></li>
-		</ul>
-		<div class="bg-color azul"></div>
-	</div>
+	<?php endwhile; endif; ?>
 </section>
+<?php endwhile; endif;
+wp_reset_postdata();
+?>
 <!-- // pages id -->
 <?php
 //$npages=get_field('pages_home','option');

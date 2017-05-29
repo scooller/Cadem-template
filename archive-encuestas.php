@@ -6,27 +6,11 @@
 	<div class="col-sm-12 buscador fucsia"><div class="container">
 		<form class="form-inline">
 			<div class="input-group">
-			  <input type="text" class="form-control" placeholder="Search for...">
+			  <input type="text" class="form-control" placeholder="Buscar...">
 			  <span class="input-group-btn">
-				  <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
+				  <button class="btn btn-default verde" type="button"><i class="icon-search"></i></button>
 			  </span>
-			</div><!-- /input-group -->
-			<div class="checkbox">
-				<input id="chkall" type="checkbox" class="filled-in" checked value="all">
-				<label for="chkall">cualquiera</label>
-			</div>
-			<div class="checkbox">
-				<input id="chkavisos" type="checkbox" class="filled-in" value="avisos">
-				<label for="chkavisos">avisos</label>
-			</div>
-			<div class="checkbox">
-				<input id="chkcolumna" type="checkbox" class="filled-in" value="columna">
-				<label for="chkcolumna">columna</label>
-			</div>
-			<div class="checkbox">
-				<input id="chkestudios" type="checkbox" class="filled-in" value="estudios">
-				<label for="chkestudios">estudios</label>
-			</div>
+			</div><!-- /input-group -->			
 		</form>
 	</div></div>
 <?php 
@@ -40,7 +24,7 @@
 		<div class="col-sm-8 desc">
 			<h4><?php the_title( ) ?></h4>
 			<div class="txt"><?php _e($excerpt); ?></div>
-			<a href="<?php the_permalink() ?>" class="btn verde">VER MÁS <i class="icon-angle-right"></i></a>
+			<a href="<?php the_permalink() ?>" class="btn verde">Descargar <i class="icon-file-pdf"></i></a>
 		</div>
 	</div>
 <?php endwhile; else: ?>

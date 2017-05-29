@@ -27,10 +27,11 @@ a,button{
 .gral-content{
 	font-family: 'Roboto Condensed', sans-serif;
 	height: 100%;
+	overflow-x: hidden;
 }
 .bg{
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100%;
 	background-position: center;
 }
 .bg.fix{
@@ -57,6 +58,13 @@ a,button{
 	.rw.img{
 		height: 35%;
 	}
+}
+.trans{
+	-webkit-transition: all .5s ease-out;
+	-moz-transition: all .5s ease-out;
+	-ms-transition: all .5s ease-out;
+	-o-transition: all .5s ease-out;
+	transition: all .5s ease-out;		
 }
 section{
 	height: 100%;
@@ -93,8 +101,25 @@ section{
 	.txt{
 		color: $blanco;
 	}
+	.title.bold{		
+		text-align: left;
+    	padding-left: 17%;
+		.list{
+			list-style: none;
+			padding: 0;
+			margin-top: 20px;
+			li{
+				text-align: left;
+				a{
+					color: $blanco;
+					font-size: 2rem;
+    				font-weight: 100;
+				}
+			}
+		}
+	}
 	.over{
-		cursor: pointer;
+		cursor: pointer;		
 		.list{
 			color: $blanco;
 			font-weight: 100;
@@ -112,12 +137,12 @@ section{
 					color: $blanco;
 				}
 			}
+		}		
+		.bg-color{
+			opacity: 0;
 		}
 		.title{
 			z-index: 2;
-		}
-		.bg-color{
-			opacity: 0;
 		}
 		.title,.list,.bg-color{
 			-webkit-transition: all .5s ease-out;
@@ -126,15 +151,17 @@ section{
 			-o-transition: all .5s ease-out;
 			transition: all .5s ease-out;
 		}
-	}
+	}	
 	.over:hover{
+		background-size: 110%;
 		.title{
 			opacity: 0;
 		}
 		.list,.bg-color{
-			opacity: 1;
+			opacity: .98;
 		}
 	}
+	
 }
 section.big{
 	font-size: 2rem;
@@ -363,12 +390,20 @@ section.mini{
 			}
 		}
 		.box-mini:hover{
+			background-size: 105%;
 			.title{
 				opacity: 0;
 			}
 			.txt{
 				opacity: 1;
 			}
+		}
+		.title small{
+			display: block;
+			color: $blanco;
+			text-transform: capitalize;
+			font-style: italic;
+    		margin-top: 5px;
 		}
 		.sub-title{
 			color: $blanco;
@@ -386,13 +421,16 @@ section.mini{
                                        
                                        
 */
-#equipo{	
+#equipo{
+	.normal{
+		height: auto;
+	}
 	.persona{
 		background-repeat: no-repeat;
 		background-position: top center;
 		background-size: cover;
-		height: 50%;
-		cursor: pointer;
+		/*height: 50%;*/
+		height: auto;
 		.nombre b{
 			font-weight: 700;
 			display: block;
@@ -416,9 +454,9 @@ section.mini{
 			right: 0;
 			text-align: center;
 			color: $blanco;
-			z-index: 2;			
+			z-index: 2;
 		}
-		.v-align,.bg-color{
+		.v-align,.bg-color,.in{
 			opacity: 0;
 			-webkit-transition: all .5s ease-out;
 			-moz-transition: all .5s ease-out;
@@ -426,9 +464,22 @@ section.mini{
 			-o-transition: all .5s ease-out;
 			transition: all .5s ease-out;
 		}
+		.in{
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+			font-size: 2.5rem;
+			color: $blanco;
+			z-index: 2;
+		}
+		.thumbnail{
+			position: relative;
+			border: none;
+			padding: 0;
+		}
 	}
 	.persona:hover{
-		.v-align,.bg-color{
+		.v-align,.bg-color,.in{
 			opacity: 1;
 		}
 	}
@@ -438,10 +489,14 @@ section.mini{
 		padding-top: 30px;
 		padding-bottom: 30px;
 		height: auto;
+		margin: 10px auto;
 	}
 }
 #encuestas{
 	background-color: #e4e4e4;	
+	form{
+		text-align: center;
+	}
 	.normal{
 		height: auto;		
 		div[class^='col']{
@@ -451,8 +506,8 @@ section.mini{
 			border-bottom: 4px solid $verde;
 		}
 		.desc{
-			-webkit-box-shadow: 0 0 5px 0 transparentize($negro,.8);
-			box-shadow: 0 0 5px 0 transparentize($negro,.8);			
+			/*-webkit-box-shadow: 0 0 5px 0 transparentize($negro,.8);
+			box-shadow: 0 0 5px 0 transparentize($negro,.8);*/		
 		}
 		.btn.verde{
 			border-radius: 0;
@@ -472,6 +527,13 @@ section.mini{
 		margin-bottom: 30px;
 		.input-group{
 			width: 60%;
+		}
+		.input-group-btn{			
+			width: 45px;
+			border-color:$verde;
+			i{
+				color: $blanco;
+			}
 		}
 	}
 }
@@ -611,7 +673,7 @@ footer{
 		width: 100%;
 	}
 	.publica.svg{
-		width: 40%;
+		width: 60%;
 	}
 	.logo.svg path{
 		fill:#c3c3c3;
@@ -648,6 +710,7 @@ footer{
 			}
 			a:hover,a:focus,a:active{
 				color: $blanco;
+				text-decoration: none;
 			}
 			title{
 				margin: 0;
@@ -688,6 +751,10 @@ footer{
 			padding: 6px 30px;
 		}
 	}
+	.social{
+		list-style: none;
+		padding: 0;
+	}
 }
 /*
   ______              _           
@@ -724,7 +791,7 @@ footer{
     z-index: 1;
 }
 .verde{
-	background-color: $verde;
+	background-color: $verde!important;
 }
 .azul{
 	background-color: $azul;
@@ -754,5 +821,8 @@ footer{
 @media (max-width: 480px) {
 	section div[class^="col-"] {
     	height: 50%;
+	}
+	.bg{
+		background-size: cover;
 	}
 }

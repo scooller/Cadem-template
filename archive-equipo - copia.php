@@ -2,11 +2,8 @@
 <!--
 	EQUIPO 
 -->
-<section class="row grid" id="equipo">	
-	<div class="container">
-		<div class="col-sm-12 normal">
-			<div class="gris desc"></div>
-		</div>
+<section class="row grid" id="equipo">
+	<div class="col-sm-12 azul desc"><?php the_field('equipo','option') ?></div>
 <?php 
 	// The Query
 	query_posts( array(
@@ -20,20 +17,14 @@
 	$cargo=get_field('cargo', $ID );
 	
 ?>
-	<div class="col-sm-3 normal persona" id="equipo-<?php echo $ID; ?>">
-		<div class="thumbnail">
-			<img src="<?php echo $img[0] ?>" class="img-responsive" >
-			<a href="#" class="in"><i class="icon-linkedin-circled"></i></a>
-			<div class="v-align">
-				<h2 class="nombre"><?php the_title(); ?></h2>
-				<h3 class="cargo"><?php echo $cargo; ?></h3>
-			</div>
-			<div class="bg-color"></div>
+	<div class="col-sm-3 normal persona" id="equipo-<?php echo $ID; ?>" style="background-image: url(<?php echo $img[0] ?>)">
+		<div class="v-align">
+			<h2 class="nombre"><?php the_title(); ?></h2>
+			<h3 class="cargo"><?php echo $cargo; ?></h3>
 		</div>
+		<div class="bg-color"></div>
 	</div>
-<?php endwhile;?>
-	</div>
-<?php else: ?>
+<?php endwhile; else: ?>
 	<?php _e('Sorry, no posts matched your criteria.'); ?>
 <?php endif; ?>
 <script type="text/javascript">
