@@ -6,18 +6,33 @@ $productoID = 97;
 $query = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'p' => $productoID ));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
 ?>
-<section class="row mini">
+<section class="row mini" id="metodo">
 	<div class="col-md-3 col-sm-12 azul">
 		<h2 class="v-align title bold"><?php the_title(); ?> <i class="icon-angle-right"></i>
-			<?php the_content(); ?>
+			<ul class="lista">
+			<?php 
+			$nn=0;
+			if( have_rows('contenido') ): while ( have_rows('contenido') ) : the_row(); $nn++;
+				echo '<li><a href="#metodo'.$nn.'">'.get_sub_field('titulo').'</a></li>';
+			endwhile; endif; ?>
+			</ul>
 		</h2>
+		<?php 
+			$nn=0;
+			if( have_rows('contenido') ): while ( have_rows('contenido') ) : the_row(); $nn++;		
+		?>
+		<div class="mini-menu anim azul" id="metodo<?php echo $nn; ?>">
+			<i class="icon-angle-left cerrar"></i>
+			<?php the_sub_field('descripcion'); ?>
+		</div>
+		<?php endwhile; endif; ?>
 	</div>
 	<?php 
 	$pages_child = new WP_Query(array('post_type' => 'page', 'posts_per_page' => -1, 'post_parent' => $productoID,'order' => 'ASC','orderby' => 'menu_order' ));
 	if ( $pages_child->have_posts() ): while ( $pages_child->have_posts() ): $pages_child->the_post(); $ChID=$post->ID;
 		$img = wp_get_attachment_image_src( get_post_thumbnail_id($ChID), 'full' );
 	?>
-	<div class="col-md-3 col-sm-4 over bg trans" style="background-image: url(<?php echo $img[0]; ?>)">
+	<div class="col-md-3 col-sm-4 over bg anim" style="background-image: url(<?php echo $img[0]; ?>)">
 		<h2 class="v-align title light"><?php the_title(); ?></h2>
 		<?php the_content(); ?>
 		<div class="bg-color azul"></div>

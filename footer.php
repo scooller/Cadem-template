@@ -3,7 +3,7 @@
 		<div class="col-sm-7">
 			<table>
 				<tr>
-					<td><img src="<?php bloginfo('template_url'); ?>/img/logo-plaza.svg" class="publica svg"></td>
+					<td><img src="<?php bloginfo('template_url'); ?>/img/logo-plaza.svg" class="publica"></td>
 					<td width="65%" align="right"><p>Ingresa tu correo electrónico para recibir información, datos y análisis que ofrece Plaza Pública Cadem.</p></td>
 				</tr>
 			</table>
@@ -11,42 +11,42 @@
 		<div class="col-sm-5">
 			<table>
 				<tr>
-					<td><?php 
-			/*if (function_exists('ninja_forms_display_form')):
-				ninja_forms_display_form(1);				
-			*/
-			Ninja_Forms()->display( 1 );
-			?></td>
+					<td><?php Ninja_Forms()->display( 1 );	?></td>
 				</tr>
 			</table>
 		</div>
 	</div></div>
 	<div class="col-md-12 gris-oscuro suscribir"><div class="container">
 		<div class="col-sm-8">
-			<table>
-				<tr>
-					<td colspan="4"><h3 class="title light">Hola, necesitas hablar con nosotros?</h3></td>
-				</tr>
-				<tr>
-					<td><a href="mailto:<?php the_field('email','option') ?>"><strong>Email</strong><?php the_field('email','option') ?></a></td>
-					<td><a href="tel:+56<?php the_field('telefono','option') ?>"><strong>Teléfono</strong>+56 <?php $fono=get_field('telefono','option');
+		
+			<div class="col-xs-12">
+				<h3 class="title light">Hola, necesitas hablar con nosotros?</h3>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<a href="mailto:<?php the_field('email','option') ?>"><strong>Email</strong><?php the_field('email','option') ?></a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+			<a href="tel:+56<?php the_field('telefono','option') ?>"><strong>Teléfono</strong>+56 <?php $fono=get_field('telefono','option');
 					$fono=strrev($fono);
 					$fono=rev_str_split($fono,4);
 					$fono=implode(' ',$fono);
 					$fono=strrev($fono);
 						   echo $fono;
-						?></a></td>
-					<td><strong>Dirección</strong>
+						?></a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+			<address><strong>Dirección</strong>
 						<a href="#"><?php the_field('direccion','option') ?></a>
 						<a href="#" data-toggle="modal" data-target="#map-modal" class="btn">VER MAPA</a>
-					</td>
-					<td><strong>Redes Sociales</strong>
+					</address>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+			<strong>Redes Sociales</strong>
 					<ul class="social">
 					<?php $menusocial=get_field('social_menu','option'); ?>
 					<?php wp_nav_menu( array('menu' => $menusocial, 'container' => '', 'menu_class' => '', 'items_wrap' => '%3$s' )); ?>
 					</ul>
-				</tr>
-			</table>
+			</div>
 		</div>
 		<div class="col-sm-4">
 			<table>
