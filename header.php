@@ -62,5 +62,6 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
 </head>
 
 <body <?php body_class(); ?>>
+	<div class="load"><i class="icon-spin6 animate-spin"></i></div>
 <div class="container-fluid gral-content anim">
 <?php get_template_part( 'nav', 'header' ); ?>

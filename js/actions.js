@@ -1,8 +1,8 @@
 // JavaScript Document
 $(function() {
 	$(window).load(function(){
-		console.log('show');
 		$('.gral-content').addClass('show');
+		$('.load').hide();
 	});
 	if($('#encuestas').length){
 		$('#encuestas .normal .bg').each(function(index,key){
@@ -116,7 +116,9 @@ $(function() {
 	
 });
 function reSize(){
+	var $navH=$('nav.navbar').height();
 	var $colH=$('footer .suscribir').height();
+	$('body .gral-content').css('padding-top',$navH-4);
 	$('footer .suscribir > .col-sm-6').height($colH);
 	if($('.row.no-glutter').length){
 		var $tam=$('.row.no-glutter').height();

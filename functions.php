@@ -144,6 +144,7 @@ function theme_enqueue() {
 	
 	wp_enqueue_style( 'general-style', get_template_directory_uri() .'/style.css', array( ) );
 	wp_enqueue_style( 'fontello-style', get_template_directory_uri() .'/fontello/css/fontello.css', array( ) );
+	wp_enqueue_style( 'fontello-anim', get_template_directory_uri() .'/fontello/css/animation.css', array( ) );
 	wp_enqueue_style( 'sass-style', get_template_directory_uri() .'/css/general.css', array( ) );
 }
 function enqueue_my_styles(){	

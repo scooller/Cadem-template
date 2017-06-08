@@ -31,11 +31,23 @@ a:hover{
 	top: 50%;
 	position: absolute;
 }
+.load{
+	position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1999;
+    text-align: center;
+    font-size: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+	color: rgba($negro,.2);
+}
 .gral-content{
 	font-family: 'Roboto Condensed', sans-serif;
 	height: 100%;
 	overflow-x: hidden;
-	padding: 0!important;
+	padding-left: 0!important;
+	padding-right: 0!important;
 	opacity: 0;
 }
 .show{
@@ -43,7 +55,7 @@ a:hover{
 }
 .bg{
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: auto 100%;
 	background-position: center;
 }
 .bg.fix{
@@ -133,8 +145,7 @@ section{
 			}
 		}
 	}
-	.over{
-		cursor: pointer;			
+	.over{		
 		.bg-color{
 			opacity: 0;
 		}
@@ -150,7 +161,7 @@ section{
 		}
 	}	
 	.over:hover{
-		background-size: 110%;
+		background-size: auto 110%;
 		.title{
 			opacity: 0;
 		}
@@ -282,8 +293,11 @@ section.big{
 	}
 }
 section.mini{
-	height: 70%;
-	min-height: 70%;
+	height: 100%;
+	min-height: 100%;
+	a{
+		cursor: default;
+	}
 }
 /*
   _  _    ___  _  _   
@@ -319,10 +333,12 @@ section.mini{
                           
                           
 */
+.navbar-collapse.in {
+    overflow-y: visible!important;
+}
 nav.navbar{
 	border: none;
-    padding: 0;
-	margin: 0 -15px;
+	background-color: $blanco;
 	.img{
 		min-width: 150px;
 		margin-left: 20px;
@@ -414,7 +430,7 @@ nav.navbar{
                              
 */
 #carousel-home{
-	height: 88%;
+	height: 100%;
 	.carousel-control{
 		overflow: hidden;
 		span{
@@ -504,7 +520,7 @@ nav.navbar{
 			}
 		}
 		.box-mini:hover{
-			background-size: 105%;
+			background-size: auto 110%;
 			.title{
 				opacity: 0;
 			}
@@ -619,11 +635,12 @@ nav.navbar{
 #encuestas{
 	background-color: #e4e4e4;	
 	form{
-		text-align: right;
+		text-align: left;
     	padding-right: 15px;
 	}
 	.normal{
-		height: auto;		
+		height: auto;
+		margin-bottom: 15px;
 		div[class^='col']{
 			background-color: $blanco;
 			height: 100%;
@@ -729,6 +746,8 @@ nav.navbar{
 			a{
 				position: relative;
     			display: block;
+				overflow: hidden;
+    			max-height: 112px;
 				i{
 					text-align: center;
 					z-index: 2;
@@ -786,8 +805,12 @@ nav.navbar{
 	}
 	.media.stick{
 		background-color: $blanco;
-		.media-left a i{
-			font-size: 10rem;
+		.media-left a{ 
+			height: auto;
+			max-height: none;
+			i{
+				font-size: 10rem;
+			}
 		}
 		.media-object{
 			max-width: 500px;
@@ -795,6 +818,9 @@ nav.navbar{
 		.media-heading{
 			color: $azul;
 		}
+	}
+	.none{
+		display: none;
 	}
 }
 /*
@@ -813,18 +839,19 @@ nav.navbar{
     	margin: 0 -15px;
 		color: $blanco;
 		margin-bottom: 20px;
+		text-align: center;
 		p{
 			opacity: .5;
-			width: 70%;
 		}
 	}
 	.title{
 		font-family: 'Roboto', sans-serif;
 		font-weight: 700;
-		text-align: right;
+		text-align: center;
     	padding-right: 40px;
 		font-size: 3rem;
-		margin-top: 4%;
+		margin-top: 20px;
+    	margin-bottom: 10px;
 	}
 	.mini-title{
 		text-align: center;
@@ -1170,6 +1197,12 @@ footer{
 	.gris-oscuro{
 		background-color: $footer;
 	}
+	.form-control:focus {
+		border-color: $verde;
+		outline: 0;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($verde,.6);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($verde,.6);
+	}
 }
 /*
   ______              _           
@@ -1242,11 +1275,15 @@ footer{
 	footer .submit-container input[type="button"]{
 		margin-top: -9px;
 	}
+	nav.navbar ul#gral-menu li a{
+		min-height: 100px;
+	}
 }
 /* Media Mobile */
 @media (max-width: 480px) {
 	.gral-content{
-		padding: 0 15px!important;
+		padding-left: 15px!important;
+		padding-right: 15px!important;
 	}
 	section div[class^="col-"] {
     	height: 50%;
@@ -1307,6 +1344,13 @@ footer{
 	#carousel-home .carousel-inner>.item .row>div[class^='col'] {
     	padding: 0 15px!important;
 	}
+	#metodo{
+		div[class^="col-"] .mini-menu i.cerrar{
+			left: auto;
+			right: 10px;
+			z-index: 5;
+		}
+	}
 	#multimedia{ 
 		.media{ 
 			.media-object {
@@ -1319,6 +1363,10 @@ footer{
 					position: static;
 				}
 			}
+		}
+		.media-left a{ 
+			height: auto;
+			max-height: none;
 		}
 		.media.stick{ 
 			.media-left{
@@ -1345,6 +1393,25 @@ footer{
     	padding-right: 0px;
     	font-size: 2.6rem;
     	margin-top: 53%;
+	}
+	#trabaja-form {
+    	min-width: 300px;
+		.form-horizontal {
+    		width: 90%;
+		}
+		.label-left .nf-field-label label {
+    		font-size: 1.5rem;
+		}
+		.label-left .nf-field-label {
+    		width: 25%;
+    		padding-left: 10px;
+		}
+		.label-left .nf-field-element {
+    		width: 70%;
+		}
+		.btn-azul{
+			margin-right: 5%;
+		}
 	}
 	footer{
 		.publica {

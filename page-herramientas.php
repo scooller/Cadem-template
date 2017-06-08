@@ -3,8 +3,7 @@
 	EQUIPO 
 -->
 <section id="herramientas"><div class="azul"><div class="row">
-	<div class="col-xs-6"><h2 class="title">Calculadora online a tu disposición</h2></div>
-	<div class="col-xs-6">
+	<div class="col-xs-12">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); $ID=get_the_ID();
 	$img=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
 	the_content();

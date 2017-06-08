@@ -19,6 +19,8 @@
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); $ID=get_the_ID();
 	$img=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
 	$excerpt = get_the_excerpt( $ID );
+	$file = get_field('pdf', $ID );
+	$urlFile = wp_get_attachment_url( $file );
 	//--
 	array_push($imgs,array('id'=>$ID,'url'=>$img[0]));
 ?>
@@ -27,7 +29,7 @@
 		<div class="col-sm-8 desc">
 			<h4 class="titulo"><?php the_title( ) ?></h4>
 			<div class="txt"><?php _e($excerpt); ?></div>
-			<a href="<?php the_permalink() ?>" class="btn verde">Descargar <i class="icon-file-pdf"></i></a>
+			<a href="<?php echo $urlFile; ?>" target="_blank" class="btn verde">Descargar <i class="icon-file-pdf"></i></a>
 		</div>
 	</div>
 <?php endwhile; ?>

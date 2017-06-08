@@ -23,6 +23,16 @@
 .icon-left-dir:before { content: '\e815'; } /* '' */
 .icon-info:before { content: '\e816'; } /* '' */
 .icon-info-circled:before { content: '\e817'; } /* '' */
+.icon-photo:before { content: '\e818'; } /* '' */
+.icon-camera:before { content: '\e819'; } /* '' */
+.icon-location:before { content: '\e81a'; } /* '' */
+.icon-paper-plane:before { content: '\e81b'; } /* '' */
+.icon-key:before { content: '\e81c'; } /* '' */
+.icon-trash:before { content: '\e81d'; } /* '' */
+.icon-params:before { content: '\e81e'; } /* '' */
+.icon-calendar:before { content: '\e81f'; } /* '' */
+.icon-star:before { content: '\e820'; } /* '' */
+.icon-lock:before { content: '\e821'; } /* '' */
 .icon-spin6:before { content: '\e839'; } /* '' */
 .icon-info-circled-alt:before { content: '\f086'; } /* '' */
 .icon-list-bullet:before { content: '\f0ca'; } /* '' */
