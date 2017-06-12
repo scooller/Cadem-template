@@ -15,38 +15,45 @@ set_time_limit(0);
 
 //Funciones
 function subirFile($file){
+	global $wpdb;
 	$filename=explode('/',$file);
 	$filename=$filename[count($filename)-1];
+	
+	$attachid = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_title LIKE '%{$filename}%'" );
+	if(!$attachid):
 
-	$uploaddir = wp_upload_dir();
-	$uploadfile = $uploaddir['path'] . '/' . $filename;
+		$uploaddir = wp_upload_dir();
+		$uploadfile = $uploaddir['path'] . '/' . $filename;
 
-	if($contents = @file_get_contents($file)):
-		usleep(4000);
-		$savefile = fopen($uploadfile, 'w');
-		fwrite($savefile, $contents);
-		fclose($savefile);
-		//after that, we can insert the image into the media library:
+		if($contents = @file_get_contents($file)):
+			usleep(4000);
+			$savefile = fopen($uploadfile, 'w');
+			fwrite($savefile, $contents);
+			fclose($savefile);
+			//after that, we can insert the image into the media library:
 
-		$wp_filetype = wp_check_filetype(basename($filename), null );
+			$wp_filetype = wp_check_filetype(basename($filename), null );
 
-		$attachment = array(
-			'post_mime_type' => $wp_filetype['type'],
-			'post_title' => $filename,
-			'post_content' => '',
-			'post_status' => 'inherit'
-		);
+			$attachment = array(
+				'post_mime_type' => $wp_filetype['type'],
+				'post_title' => $filename,
+				'post_content' => '',
+				'post_status' => 'inherit'
+			);
 
-		$attach_id = wp_insert_attachment( $attachment, $uploadfile );
+			$attach_id = wp_insert_attachment( $attachment, $uploadfile );
 
-		$imagenew = get_post( $attach_id );
-		$fullsizepath = get_attached_file( $imagenew->ID );
-		$attach_data = wp_generate_attachment_metadata( $attach_id, $fullsizepath );
-		wp_update_attachment_metadata( $attach_id, $attach_data );
-		//
-		return $attach_id;
+			$imagenew = get_post( $attach_id );
+			$fullsizepath = get_attached_file( $imagenew->ID );
+			$attach_data = wp_generate_attachment_metadata( $attach_id, $fullsizepath );
+			wp_update_attachment_metadata( $attach_id, $attach_data );
+			//
+			return $attach_id;
+		else:
+			return false;
+		endif;
 	else:
-		return false;
+		return $attachid;
 	endif;
 }
 function addEncuesta($posteo){
@@ -55,7 +62,7 @@ function addEncuesta($posteo){
 	if(!$postid){
 		$my_post = array(
 			'post_title' => $posteo->titulo,
-			//'post_date' => $posteo->fecha,
+			'post_date_gmt' => $posteo->fecha,
 			'post_content' => $posteo->contenido,
 			'post_status' => 'publish',
 			'post_type' => 'encuestas',
@@ -67,17 +74,29 @@ function addEncuesta($posteo){
 			if($imageID){
 				set_post_thumbnail( $the_post_id, $imageID );
 			}
-			//Imagen
+			//PDF
+			/*
 			$fileID=subirFile($posteo->pdf);
 			if($fileID){
 				update_field('pdf', $fileID, $the_post_id);
-			}
+			}*/
 			return $the_post_id;
 		}else{
-			return $result->get_error_message();
+			return $the_post_id->get_error_message();
 		}
-	}else{	
-		return 'Duplicado';
+	}else{
+		if(isset($_GET['pdf'])){
+			//PDF
+			$fileID=subirFile($posteo->pdf);
+			if($fileID){
+				update_field('pdf', $fileID, $postid);
+				return 'PDF Agregado';
+			}else{
+				return 'PDF error';
+			}
+		}else{
+			return 'Duplicado';
+		}
 	}
 }
 //recorrer json

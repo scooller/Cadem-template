@@ -15,6 +15,12 @@
 	</div></div>
 <?php 
 	// The Query
+	query_posts( array(
+		'post_type' => 'encuestas',
+		'orderby' => 'date', 
+		'order'   => 'DESC',
+		'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
+	));
 	$imgs=array();
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); $ID=get_the_ID();
 	$img=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
@@ -25,14 +31,24 @@
 	array_push($imgs,array('id'=>$ID,'url'=>$img[0]));
 ?>
 	<div class="col-sm-6 normal" id="encuesta-<?php echo $ID; ?>">
-		<div class="col-sm-4 bg"></div>
-		<div class="col-sm-8 desc">
+		<a class="col-sm-4 bg" style="display: block" href="<?php the_permalink(); ?>" target="_self"></a>
+		<div class="col-sm-8 desc"><a href="<?php the_permalink(); ?>" target="_self">
 			<h4 class="titulo"><?php the_title( ) ?></h4>
 			<div class="txt"><?php _e($excerpt); ?></div>
+			</a>
 			<a href="<?php echo $urlFile; ?>" target="_blank" class="btn verde">Descargar <i class="icon-file-pdf"></i></a>
 		</div>
 	</div>
 <?php endwhile; ?>
+<div class="col-sm-12">
+	<nav aria-label="Paginador">
+	<ul class="pager">
+	<!-- Add the pagination functions here. -->		
+		<li><?php previous_posts_link( '<i class="icon-left-open"></i> Nuevos' ); ?></li>
+		<li><?php next_posts_link( 'Antiguos <i class="icon-right-open"></i>' ); ?></li>
+	</ul>
+	</nav>
+</div>
 <style>
 <?php foreach($imgs as $img): ?>
 	#encuesta-<?php echo $img['id'] ?> .bg:before{

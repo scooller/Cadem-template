@@ -10,19 +10,25 @@
 			</div>
 		</div>
 		<div class="col-sm-4">
-			<a href="#" class="box-mini azul bg anim col-sm-12 col-xs-6" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_04.png);">
-				<small>Plaza Pública Cadem</small>
-				<h4 class="v-align title">Encuesta N° 176 - 29 de mayo de 2017</h4>
-				<div class="txt v-align">
-					<p>Un 80% está de acuerdo con la elección directa de los Intendentes pero sólo un 50% cree que el proyecto deba ser aprobado durante este año.</p>
+			<a href="#" class="box-mini verde col-sm-12 col-xs-6">
+				<div class="all">
+					<small>Plaza Pública Cadem</small>
+					<h4 class="v-align title">Encuesta N° 176 - 29 de mayo de 2017</h4>
+					<div class="txt v-align">
+						<p>Un 80% está de acuerdo con la elección directa de los Intendentes pero sólo un 50% cree que el proyecto deba ser aprobado durante este año.</p>
+					</div>
 				</div>
+				<div class="bg-img bg anim" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_04.png);)"></div>
 			</a>
-			<a href="#" class="box-mini fucsia bg anim col-sm-12 col-xs-6" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_13.png);     background-position: center top;">
-				<small>encuestas</small>
-				<h4 class="v-align title">MUJERES EN LAS EMPRESAS</h4>
-				<div class="txt v-align">
-					<p>Estudio de Cadem evidencia percepción de desigualdad laboral y una preferencia por las jefaturas masculinas.</p>
+			<a href="#" class="box-mini fucsia col-sm-12 col-xs-6">
+				<div class="all">
+					<small>encuestas</small>
+					<h4 class="v-align title">MUJERES EN LAS EMPRESAS</h4>
+					<div class="txt v-align">
+						<p>Estudio de Cadem evidencia percepción de desigualdad laboral y una preferencia por las jefaturas masculinas.</p>
+					</div>
 				</div>
+				<div class="bg-img bg anim" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_13.png);)"></div>
 			</a>
 		</div>
 		<div class="col-sm-4">
@@ -36,12 +42,15 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 	$subtitle = get_field('subtitulo',$ID);
 	$excerpt = get_the_excerpt( $ID );
 ?>
-			<a href="<?php the_permalink(); ?>" class="box-mini fucsia bg anim col-sm-12 col-xs-6" style="background-image: url(<?php echo $img[0]; ?>)">
-				<small>prensa</small>
-				<h4 class="v-align title"><?php the_title() ?></h4>
-				<div class="txt v-align">
-					<p><?php echo $excerpt ?></p>
+			<a href="<?php the_permalink(); ?>" class="box-mini fucsia col-sm-12 col-xs-6">
+				<div class="all">
+					<small>prensa</small>
+					<h4 class="v-align title"><?php the_title() ?></h4>
+					<div class="txt v-align">
+						<p><?php echo $excerpt ?></p>
+					</div>
 				</div>
+				<div class="bg-img bg anim" style="background-image: url(<?php echo $img[0]; ?>)"></div>
 			</a>
 <?php 
 	endwhile; endif;
@@ -57,12 +66,15 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 	//$subtitle = get_field('subtitulo',$ID);
 	$excerpt = get_the_excerpt( $ID );
 ?>
-			<a href="<?php the_permalink(); ?>" class="box-mini fucsia bg anim col-sm-12 col-xs-6" style="background-image: url(<?php echo $img[0]; ?>)">
-				<small>encuestas</small>
-				<h4 class="v-align title"><?php the_title() ?></h4>
-				<div class="txt v-align">
-					<p><?php echo $excerpt ?></p>
+			<a href="<?php the_permalink(); ?>" class="box-mini verde col-sm-12 col-xs-6">
+				<div class="all">
+					<small>encuestas</small>
+					<h4 class="v-align title"><?php the_title() ?></h4>
+					<div class="txt v-align">
+						<p><?php echo $excerpt ?></p>
+					</div>
 				</div>
+				<div class="bg-img bg anim" style="background-image: url(<?php echo $img[0]; ?>)"></div>
 			</a>
 <?php 
 	endwhile; endif;
