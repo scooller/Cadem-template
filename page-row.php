@@ -11,11 +11,15 @@
 		$updn=get_sub_field('arriba_abajo');
 		$img=get_sub_field('imagen');
 		$class=get_sub_field('clases');
+		$detect = new Mobile_Detect;
+		if ( $detect->isMobile() ){
+			$updn = 'Abajo';
+		}
 ?>
 		<div class="col-sm-<?php echo $ndiv; ?>">
-			<?php echo $updn=='Abajo'?'<div class="rw img bg" style="background-image: url('.$img.')"></div>':''; ?>
+			<?php echo $updn=='Abajo'?'<div class="rw img bg-full" style="background-image: url('.$img.')"></div>':''; ?>
 			<div class="rw <?php echo $class; ?>"><div class="txt v-align"><?php the_sub_field('contenido'); ?></div></div>
-			<?php echo $updn=='Arriba'?'<div class="rw img bg" style="background-image: url('.$img.')"></div>':''; ?>
+			<?php echo $updn=='Arriba'?'<div class="rw img bg-full" style="background-image: url('.$img.')"></div>':''; ?>
 		</div>
 <?php
 	endwhile; endif;

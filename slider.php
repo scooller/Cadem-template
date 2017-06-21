@@ -10,33 +10,64 @@
 			</div>
 		</div>
 		<div class="col-sm-4">
+		<?php
+			/*
+			Plaza Publica:::
+			*/
+$query = new WP_Query(array('cat' => 11, 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'));
+if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
+	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
+	$subtitle = get_field('subtitulo',$ID);
+	$excerpt = get_the_excerpt( $ID );
+?>
 			<a href="#" class="box-mini verde col-sm-12 col-xs-6">
 				<div class="all">
 					<small>Plaza Pública Cadem</small>
-					<h4 class="v-align title">Encuesta N° 176 - 29 de mayo de 2017</h4>
+					<h4 class="v-align title"><?php the_title() ?></h4>
 					<div class="txt v-align">
-						<p>Un 80% está de acuerdo con la elección directa de los Intendentes pero sólo un 50% cree que el proyecto deba ser aprobado durante este año.</p>
+						<p><?php echo $excerpt ?></p>
 					</div>
 				</div>
-				<div class="bg-img bg anim" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_04.png);)"></div>
+				<div class="bg-img bg anim" style="background-image: url(<?php echo $img[0]; ?>)"></div>
 			</a>
-			<a href="#" class="box-mini fucsia col-sm-12 col-xs-6">
+<?php 
+	endwhile; endif;
+	wp_reset_postdata();
+?>
+<?php
+			/*
+			Encuestas:::
+			*/
+$IDOld=0;
+$query = new WP_Query(array('post_type' => 'encuestas', 'category__in' => array(42), 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'));
+if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
+	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
+	//$subtitle = get_field('subtitulo',$ID);
+	$excerpt = get_the_excerpt( $ID );
+	$IDold = $ID;
+?>
+			<a href="<?php the_permalink(); ?>" class="box-mini fucsia col-sm-12 col-xs-6">
 				<div class="all">
 					<small>encuestas</small>
-					<h4 class="v-align title">MUJERES EN LAS EMPRESAS</h4>
+					<h4 class="v-align title"><?php the_title() ?></h4>
 					<div class="txt v-align">
-						<p>Estudio de Cadem evidencia percepción de desigualdad laboral y una preferencia por las jefaturas masculinas.</p>
+						<p><?php echo $excerpt ?></p>
 					</div>
 				</div>
-				<div class="bg-img bg anim" style="background-image: url(<?php bloginfo('template_url'); ?>/img/dummy/cademcl-home_13.png);)"></div>
+				<div class="bg-img bg anim" style="background-image: url(<?php echo $img[0]; ?>)"></div>
 			</a>
+<?php 
+	endwhile; endif;
+	wp_reset_postdata();
+?>
+			
 		</div>
 		<div class="col-sm-4">
 		<?php
 			/*
 			PRENSA:::
 			*/
-$query = new WP_Query(array('cat' => 8, 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'ASC'));
+$query = new WP_Query(array('post_type' => 'prensa', 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
 	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
 	$subtitle = get_field('subtitulo',$ID);
@@ -60,13 +91,13 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 			/*
 			Encuestas:::
 			*/
-$query = new WP_Query(array('post_type' => 'encuestas', 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'ASC'));
+$query = new WP_Query(array('post_type' => 'encuestas', 'category__in' => array(42), 'post_status' => 'publish', 'posts_per_page' => 1, 'post__not_in' => array($IDold), 'orderby' => 'date', 'order' => 'DESC'));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
 	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
 	//$subtitle = get_field('subtitulo',$ID);
 	$excerpt = get_the_excerpt( $ID );
 ?>
-			<a href="<?php the_permalink(); ?>" class="box-mini verde col-sm-12 col-xs-6">
+			<a href="<?php the_permalink(); ?>" class="box-mini azul col-sm-12 col-xs-6">
 				<div class="all">
 					<small>encuestas</small>
 					<h4 class="v-align title"><?php the_title() ?></h4>

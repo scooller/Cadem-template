@@ -8,6 +8,7 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 	$(window).load(function(){
 		$('.gral-content').addClass('show');
 		$('.load').hide();
+		$('#nf-form-1-cont input[type="email"]').attr('placeholder','nombre@email.com');
 	});
 	if($('#encuestas').length){
 		$('#encuestas .normal .bg').each(function(index,key){
@@ -32,7 +33,7 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 		reSize();
 	});
 	reSize();
-	$('.svg').inlineSVG();
+	$('.svg').inlineSVG();	
 	//Herramientas
 	$("#CalcularTamano").submit(function(event){
 		event.preventDefault;
@@ -116,28 +117,36 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 			src		: $src,
 			type	: 'inline'
 		});
+		$('nav.navbar-fixed-top .navbar-toggle[type="button"]').addClass('collapsed');
+		$('nav.navbar-fixed-top #navbar-collapse').removeClass('in');
 		return false;
 	});
-	
+	if(!$('body.home').length){
+		var href=$('ul#gral-menu #menu-item-5 a').attr('href');
+		$('ul#gral-menu #menu-item-5 a').attr('href','/'+href);
+	}else{
+		$('ul#gral-menu #menu-item-5 a').click(function(e){
+			e.preventDefault();
+			$(this).parents('li').addClass('current-menu-item');
+			var href=$(this).attr('href');
+			$(".gral-content").animate({scrollTop: $(href).offset().top-$('nav.navbar-fixed-top').height() }, '500');
+			return false;
+		});		
+	}
 });
 function reSize(){
-	var $navH=$('nav.navbar').height();
+	var $navH=0;
+	if(!isMobile){
+		$navH=$('nav.navbar-fixed-top').height();
+	}else{
+		$navH=$('nav.navbar-fixed-top .navbar-header').height();
+	}
 	var $colH=$('footer .suscribir').height();
 	$('body .gral-content').css('padding-top',$navH-4);
+	
 	$('footer .suscribir > .col-sm-6').height($colH);
 	if($('.row.no-glutter').length){
-		var $tam=$('.row.no-glutter').height();
-		$('.row.no-glutter div[class^="col-"]').height($tam);
-	}
-	if(!isMobile){
-		if($('#single').length){
-			var $tamTxt=$('#single .row').height();
-			var $tamImg=$('#single .img-responsive').height();
-			if($tamTxt > $tamImg){
-				$('#single .row div[class^="col-"]').height($tamTxt);
-			}else{
-				$('#single .row div[class^="col-"]').height($tamImg);
-			}
-		}
+		var $tam=$(window).height();
+		$('.row.no-glutter div[class^="col-"]').height($tam-$navH);
 	}
 }

@@ -32,7 +32,7 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 	if ( $pages_child->have_posts() ): while ( $pages_child->have_posts() ): $pages_child->the_post(); $ChID=$post->ID;
 		$img = wp_get_attachment_image_src( get_post_thumbnail_id($ChID), 'full' );
 	?>
-	<div class="col-md-3 col-sm-4 over bg anim" style="background-image: url(<?php echo $img[0]; ?>)">
+	<div class="col-md-3 col-sm-4 over bg anim azul" style="background-image: url(<?php echo $img[0]; ?>)">
 		<h2 class="v-align title light"><?php the_title(); ?></h2>
 		<?php the_content(); ?>
 		<div class="bg-color azul"></div>
@@ -49,6 +49,7 @@ if( have_rows('pages_home', 'option') ): while( have_rows('pages_home', 'option'
 //--
 $pID = get_sub_field('page_id');
 $img = wp_get_attachment_image_src( get_post_thumbnail_id($pID), 'full' );
+$url = get_field('url', $pID );
 ?>
 <!-- // section -->
 <section class="row verde big" style="background-image: url(<?php echo $img[0]; ?>)"><div class="container">
@@ -59,7 +60,7 @@ $img = wp_get_attachment_image_src( get_post_thumbnail_id($pID), 'full' );
 	<div class="col-md-6">
 		<div class="v-align txt"><?php echo get_post_field('post_content', $pID); ?></div>
 	</div>
-	<a href="<?php echo get_the_permalink($pID) ?>" class="btn ir">Ir</a>
+	<a href="<?php echo $url; ?>" target="_blank" class="btn ir">Ir</a>
 </div>	
 </div></section>
 <?php

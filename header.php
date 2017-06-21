@@ -31,7 +31,7 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
     <meta name="description" content="<?php bloginfo('description'); ?>">
     <meta name="googlebot" content="index" />
     
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta property="og:title" content=""/>
     <meta property="og:image" content="<?php bloginfo('template_url'); ?>/fb-share.jpg"/>
     <meta property="og:site_name" content=""/>
@@ -61,7 +61,7 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
     <?php wp_head(); ?>    
 </head>
 
-<body <?php body_class(); ?>>
-	<div class="load"><i class="icon-spin6 animate-spin"></i></div>
+<body <?php body_class(); ?> data-spy="scroll" data-target="nav.navbar-fixed-top">
+	<div class="load"><img src="<?php bloginfo('template_url'); ?>/img/cargador.svg" class="img-responsive animate-spin"></div>
 <div class="container-fluid gral-content anim">
 <?php get_template_part( 'nav', 'header' ); ?>

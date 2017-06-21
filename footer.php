@@ -11,7 +11,12 @@
 		<div class="col-sm-5">
 			<table>
 				<tr>
-					<td><?php Ninja_Forms()->display( 1 );	?></td>
+					<td><?php 
+			/*if (function_exists('ninja_forms_display_form')):
+				ninja_forms_display_form(1);				
+			*/
+			Ninja_Forms()->display( 1 );
+			?></td>
 				</tr>
 			</table>
 		</div>

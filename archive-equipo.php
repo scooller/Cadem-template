@@ -4,7 +4,7 @@
 -->
 <section class="row grid" id="equipo">	
 	<div class="container">
-		<div class="col-sm-12 normal">
+		<div class="col-sm-12 normal hidden">
 			<div class="gris desc"></div>
 		</div>
 <?php 
@@ -22,7 +22,7 @@
 ?>
 	<div class="col-sm-3 normal persona" id="equipo-<?php echo $ID; ?>">
 		<div class="thumbnail">
-			<img src="<?php echo $img[0] ?>" class="img-responsive" >
+			<img src="<?php echo $img[0] ?>" class="img-responsive anim" >
 			<a href="<?php echo $linkedin ?>" target="_blank" class="in" title="Ir a Linkedin..."><i class="icon-linkedin-circled"></i></a>
 			<div class="v-align">
 				<h2 class="nombre"><?php the_title(); ?></h2>

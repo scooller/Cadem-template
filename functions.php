@@ -9,7 +9,7 @@ function register_my_menu() {
 	add_theme_support( 'html5' );
 	add_theme_support( 'custom-logo' );
 }
-
+require_once WP_CONTENT_DIR . '/themes/cadem/Mobile_Detect.php';
 //--
 if( function_exists('acf_add_options_page') ) {	
 	acf_add_options_page(array(
@@ -109,6 +109,27 @@ function create_post_type() {
 		)
 	);
 	//--
+	register_post_type( 'prensa',
+		array(
+			'labels' => array(
+				'name' => __( 'Prensa', 'cadem' ),
+				'singular_name' => __( 'Prensa', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => true,
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	//--
 }
 function wpcodex_add_excerpt_support_for_cpt() {
  add_post_type_support( 'encuestas', 'excerpt' );
@@ -132,6 +153,10 @@ function custom_post_css() {
 		#adminmenu li#menu-posts-multimedia div.wp-menu-image:before {
             font-family:  fontello !important;
             content: '\\e800';
+		}
+		#adminmenu li#menu-posts-prensa div.wp-menu-image:before {
+            font-family:  fontello !important;
+            content: '\\e805';
 		}
     </style>";
 }
