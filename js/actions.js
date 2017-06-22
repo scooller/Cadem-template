@@ -140,6 +140,7 @@ function reSize(){
 		$navH=$('nav.navbar-fixed-top').height();
 	}else{
 		$navH=$('nav.navbar-fixed-top .navbar-header').height();
+		$('#gral-menu').height($(window).height()-$navH);
 	}
 	var $colH=$('footer .suscribir').height();
 	$('body .gral-content').css('padding-top',$navH-4);

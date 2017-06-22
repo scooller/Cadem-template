@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); 
+$detect = new Mobile_Detect;
+?>
 <!--
 	PRENSA 
 -->
@@ -12,23 +14,43 @@
 		'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)
 	));
 	$imgs=array();
+	$cont=1;
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); $ID=get_the_ID();
-	$img=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
+	$img=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'medium' );
+	$imgF=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
 	$excerpt = get_the_excerpt( $ID );
 	$url = get_field('url', $ID );
+	$class='col-sm-6'; 
+	if($cont==1 && !$detect->isMobile()):
 ?>
+<div class="normal destacado" id="prensa-<?php echo $ID; ?>">
+  <div class="media-left">
+    <a href="<?php the_permalink(); ?>" target="_self">
+     	<img class="media-object anim" src="<?php echo $cont==1?$imgF[0]:$img[0]; ?>" alt="">
+    </a>
+  </div>
+  <div class="media-body">
+  <div class="v-align">
+  	<h2 class="media-heading"><?php the_title( ) ?></h2>
+  	<div class="txt"><?php _e($excerpt); ?></div>
+  	<a href="<?php the_permalink(); ?>" target="_self" class="btn borde">Ver Más</a>
+  </div>
+  </div>
+</div>
+<?php else: ?>
 	<div class="col-sm-6 normal" id="encuesta-<?php echo $ID; ?>">
 		<a class="col-sm-12 bg" style="display: block" href="<?php the_permalink(); ?>" target="_self">
 			<img src="<?php echo $img[0]; ?>" class="img-responsive anim">
 		</a>
-		<div class="col-sm-12 desc"><a href="<?php echo $url; ?>" target="_blank">
+		<div class="col-sm-12 desc"><a href="<?php the_permalink(); ?>" target="_blank">
 			<h4 class="titulo"><?php the_title( ) ?></h4>
 			<div class="txt"><?php _e($excerpt); ?></div>
 			</a>
-			<a href="<?php echo $url; ?>" target="_blank" class="btn borde">Ver Más</a>
+			<a href="<?php the_permalink(); ?>" target="_self" class="btn borde">Ver Más</a>
 		</div>
 	</div>
-<?php endwhile; ?>
+<?php endif;
+	$cont++;endwhile; ?>
 <div class="col-sm-12">
 	<nav aria-label="Paginador">
 	<ul class="pager">

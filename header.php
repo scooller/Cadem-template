@@ -32,12 +32,7 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
     <meta name="googlebot" content="index" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content="<?php bloginfo('template_url'); ?>/fb-share.jpg"/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
 <!--   
     <link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-60x60.png">

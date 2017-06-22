@@ -44,9 +44,8 @@ a:hover{
     transform: translateY(-50%);
 	color: rgba($negro,.2);
 	img{
-		width: 15%;
+		width: 2.5%;
     	margin: 0 auto;
-    	opacity: .3;
 	}
 }
 .gral-content{
@@ -91,6 +90,8 @@ a:hover{
 }
 .fancybox-close-small:after{
 	border-radius: 0!important;
+	background: none!important;
+	color: $blanco!important;
 }
 .row.no-glutter{
 	div[class^="col-"]{
@@ -268,6 +269,7 @@ section.big{
 			font-size: 4rem;
 			cursor: pointer;
 			transform: scaleX(-1);
+			z-index: 2;
 		}
 		i.cerrar:hover{
 			color: rgba($blanco,.5);
@@ -275,7 +277,10 @@ section.big{
 		.title{
 			text-align: left;
 			margin-bottom: 10px;
-			padding-left: 40px;
+			padding-left: 40px;	
+			top: 27px;
+			left: 20px;
+    		position: absolute;
 		}
 		.list{
 			opacity: 1;
@@ -286,7 +291,7 @@ section.big{
 	}
 	.mini-menu.active{
 		margin-left: -15px;
-		opacity: 1;
+		opacity: 1;	
 		i.cerrar{
 			transform: scaleX(1);
 		}
@@ -975,7 +980,7 @@ nav.navbar{
 	background-color: $fondo-gris;
 	.container > .row{
 		margin-top: 40px;
-	}
+	}	
 	.normal{
 		height: auto;
 		margin-bottom: 15px;
@@ -1008,7 +1013,7 @@ nav.navbar{
 				-o-filter: brightness(120%);
 				filter: brightness(120%);
 			}
-		}
+		}		
 		.bg:before{
 			content: '';
 			background-color: rgba($negro,.3);
@@ -1049,6 +1054,19 @@ nav.navbar{
 	.btn.borde{
 		margin-top: 20px;
 	}
+	//Destacado
+	.destacado{
+		margin-left: 15px;
+		margin-right: 15px;
+		background-color: $blanco;
+		.media-heading{
+			color: $negro;
+		}
+		.media-body{
+			color: $txt-color;
+			position: relative;
+		}	
+	}
 }
 /*
    _____ _             _      
@@ -1084,8 +1102,30 @@ nav.navbar{
 		margin: 0 auto;
 		width: 100%;
 	}
-	a.btn{
+	.btn.verde{
 		color: $blanco;
+	}
+	.otros{
+		background-color: #fff;
+    	margin-top: 40px;
+		margin-bottom: 20px;
+		padding-top: 20px;
+		a.btn{
+			color: $blanco;
+		}
+		.btn.borde{
+			color: $negro;
+			margin: 20px 0;
+		}
+		.btn.borde:hover{
+			color: $blanco;
+		}
+		a{
+			color: $txt-color;
+		}
+		.bg{
+			min-height: 200px;
+		}
 	}
 }
 /*
@@ -1215,6 +1255,27 @@ input[type="checkbox"], input[type="radio"] {
 }
 .label-left .nf-field-label{
 	display: inline-block!important;
+}
+.share{
+	margin: 10px 0;
+    border: 1px solid $negro;
+	.btn{
+		color: $negro;
+		background-color: $blanco;
+		border-radius: 0;
+		text-transform: uppercase;
+	}
+	.btn[disabled]{
+		opacity: 1;
+	}
+	a{
+		border-left: 1px solid $negro;
+		color: $negro;
+	}
+	a:hover{
+		color: $blanco!important;
+		background-color: $negro;
+	}
 }
 /*
 .single{
@@ -1535,6 +1596,9 @@ footer{
 		text-align: center;
 		font-size: 2rem;
 	}
+	.load img{
+		width: 15%;
+	}
 	.newspaper {
 		-webkit-column-count: 1; /* Chrome, Safari, Opera */
 		-moz-column-count: 1; /* Firefox */
@@ -1556,7 +1620,11 @@ footer{
 		flex-direction: column;
 		border: none;
 		li a{
-			padding: 12px;
+			padding: 0;
+    		height: 9vh;
+			i{
+				display: none;
+			}
 		}
 		li:not(.otro) {
     		border-right: none;
@@ -1651,10 +1719,27 @@ footer{
     	line-height: 3rem;
 	}
 	#metodo{
-		div[class^="col-"] .mini-menu i.cerrar{
-			left: auto;
-			right: 10px;
-			z-index: 5;
+		div[class^="col-"]{
+			height: 100%;
+			min-height: 100vh;
+			.mini-menu{
+				.title{
+					left: 0;
+					width: 80%;
+					margin-left: 0;
+				}
+				i.cerrar{
+					left: auto;
+					right: 10px;
+					z-index: 5;
+				}
+			}
+			.lista{
+				width: 90%;
+				a{
+					font-size: 1.8rem;
+				}
+			}
 		}
 		.over{
 			.title{
@@ -1671,7 +1756,7 @@ footer{
 			.bg-color{
 				opacity: .9!important;
 			}
-		}
+		}		
 	}
 	#multimedia{ 
 		.media{ 
@@ -1686,9 +1771,17 @@ footer{
 				font-size: 1.5rem;
 			}
 		}
-		.media-left a{ 
-			height: auto;
-			max-height: none;
+		.media-left{ 
+			a{ 
+				height: auto;
+				max-height: none;			
+				i{
+					opacity: 1!important;
+				}
+			}
+			a:before{
+    			opacity: 1!important;
+			}
 		}
 		.media.stick{ 
 			.media-left{
@@ -1710,7 +1803,8 @@ footer{
 		}
 		.txt{
 			display: none;
-		}		
+		}
+		
 	}
 	#herramientas .title {
     	padding-right: 0px;
@@ -1752,6 +1846,9 @@ footer{
 			transform: none;
 			position: static;
 			top: auto;
+		}
+		.otros .titulo{
+			font-size: 1.3rem;
 		}
 	}
 	
