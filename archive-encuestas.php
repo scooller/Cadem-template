@@ -4,9 +4,10 @@
 -->
 <section id="encuestas"><div class="container"><div class="row grid">
 	<div class="col-sm-12 buscador"><div class="container">
-		<form class="form-inline">
+		<form method="get" action="<?php echo site_url('/'); ?>" class="form-inline">
 			<div class="input-group">
-			  <input type="text" class="form-control" placeholder="Buscar...">
+		  	  <input type="hidden" name="post_type" value="encuestas" />
+			  <input type="text" name="s" class="form-control" placeholder="Buscar...">
 			  <span class="input-group-btn">
 				  <button class="btn btn-default verde" type="button"><i class="icon-search"></i></button>
 			  </span>

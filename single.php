@@ -16,7 +16,7 @@
 		}
 ?>
 		<div class="col-md-12">
-			<div class="bg" style="background-image: url(<?php echo $img[0] ?>)"></div>
+			<?php if($img[0]): ?><a href="<?php echo $img[0] ?>" data-fancybox="single" class="bg" style="background-image: url(<?php echo $img[0] ?>)"></a><?php endif; ?>
 			<h1 class="title"><?php the_title(); ?></h1>
 			<div class="newspaper"><?php the_content(); ?><?php echo $btn; ?></div>
 			<div class="share btn-group">
