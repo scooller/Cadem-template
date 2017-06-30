@@ -108,6 +108,12 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 		$("#CalcularDiferencia .comentarioDiferencia").html( '<i class="icon-info-circled"></i> '+valor_alcanzado ).show();
          return false;
     }
+	$('#nav-plaza button.navbar-toggle').click(function(event){
+		event.preventDefault;
+		$(this).children('.icon-bar').toggleClass('ex');
+		$('#nav-plaza ul.nav').toggleClass('active');
+		return false;
+	});
 	//fancybox
 	$(".fancy.inline").click(function(event){
 		event.preventDefault;

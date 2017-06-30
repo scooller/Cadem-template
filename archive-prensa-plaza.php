@@ -8,7 +8,7 @@ $detect = new Mobile_Detect;
 <?php 
 	// The Query
 	query_posts( array(
-		'post_type' => 'prensa',
+		'post_type' => 'prensa-plaza',
 		'orderby' => 'date', 
 		'order'   => 'DESC',
 		'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1)

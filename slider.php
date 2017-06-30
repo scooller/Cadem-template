@@ -42,8 +42,8 @@ $IDOld=0;
 $query = new WP_Query(array('post_type' => 'encuestas', 'category__in' => array(42), 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
 	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
-	//$subtitle = get_field('subtitulo',$ID);
-	$excerpt = get_the_excerpt( $ID );
+	$excerpt = get_field('texto_home',$ID);
+	//$excerpt = get_the_excerpt( $ID );
 	$IDold = $ID;
 ?>
 			<a href="<?php the_permalink(); ?>" class="box-mini fucsia col-sm-12 col-xs-6">
@@ -67,18 +67,21 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 			/*
 			PRENSA:::
 			*/
-$query = new WP_Query(array('post_type' => 'prensa', 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'));
+$query = new WP_Query(array('post_type' => 'prensa', 'category__in' => array(42), 'post_status' => 'publish', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
 	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
 	$subtitle = get_field('subtitulo',$ID);
-	$excerpt = get_the_excerpt( $ID );
+	$sub_title = get_field('sub_titulo', $ID );
+	$fuente = get_field('fuente',$ID);
+	//$excerpt = get_the_excerpt( $ID );
+	$excerpt = get_field('texto_home',$ID);
 ?>
 			<a href="<?php the_permalink(); ?>" class="box-mini fucsia col-sm-12 col-xs-6">
 				<div class="all">
 					<small>prensa</small>
-					<h4 class="v-align title"><?php the_title() ?></h4>
+					<h4 class="v-align title"><?php echo $fuente; ?>: <?php the_title() ?></h4>
 					<div class="txt v-align">
-						<p><?php echo $excerpt ?></p>
+						<p><?php echo empty($sub_title)?$excerpt:$sub_title; ?></p>
 					</div>
 				</div>
 				<div class="bg-img bg anim" style="background-image: url(<?php echo $img[0]; ?>)"></div>
@@ -93,9 +96,9 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 			*/
 $query = new WP_Query(array('post_type' => 'encuestas', 'category__in' => array(42), 'post_status' => 'publish', 'posts_per_page' => 1, 'post__not_in' => array($IDold), 'orderby' => 'date', 'order' => 'DESC'));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
-	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
-	//$subtitle = get_field('subtitulo',$ID);
-	$excerpt = get_the_excerpt( $ID );
+	$img = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );	
+	//$excerpt = get_the_excerpt( $ID );
+	$excerpt = get_field('texto_home',$ID);
 ?>
 			<a href="<?php the_permalink(); ?>" class="box-mini azul col-sm-12 col-xs-6">
 				<div class="all">

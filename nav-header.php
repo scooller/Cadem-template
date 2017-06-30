@@ -14,8 +14,3 @@
 		</ul>
 	</div>
 </nav>
-<!-- // -->
-<div style="display: none;" id="trabaja-form">
-<img src="<?php bloginfo('template_url'); ?>/img/lightbox-trabaja.jpg" class="img-responsive">
-<?php Ninja_Forms()->display( 2 );	?>
-</div>

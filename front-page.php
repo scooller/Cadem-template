@@ -37,6 +37,10 @@ if ( $pages_child->have_posts() ): while ( $pages_child->have_posts() ): $pages_
 		'img'			=> $img[0]
 	));
 endwhile; endif;
+$bg='';
+if ( $detect->isMobile() ){
+	$bg=' ';
+}
 ?>
 <section class="row mini" id="metodo">
 	<div class="col-md-3 col-sm-12 azul">
@@ -75,6 +79,9 @@ endwhile; endif;
 			echo $metodo['descripcion']; ?>
 		</div>	
 		<?php endforeach; endif; ?>
+		<?php if ( $detect->isMobile() ): ?>
+		<div class="bg" style="background-image: url(<?php echo $otro[2]['img'] ?>);"></div>
+		<?php endif; ?>
 	</div>
 	<?php 
 	if ( !$detect->isMobile() ):

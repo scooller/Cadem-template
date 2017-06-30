@@ -5,11 +5,24 @@ add_action( 'after_setup_theme', 'register_my_menu' );
 function register_my_menu() {  
 	register_nav_menu( 'social', __( 'Social Menu', 'cadem' ) );
 	register_nav_menu( 'general', __( 'Menu Principal', 'cadem' ) );
+	register_nav_menu( 'plaza', __( 'Menu Plaza Publica', 'cadem' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5' );
 	add_theme_support( 'custom-logo' );
 }
 require_once WP_CONTENT_DIR . '/themes/cadem/Mobile_Detect.php';
+
+function is_PP($slug){
+	//$slug = basename($slug);
+	$pageSlider = get_field('slider_pp','option');
+	$pID = get_the_ID();
+	$paID = wp_get_post_parent_id($pID);
+	if( (stripos($slug,'plaza-publica') !== false) || ($paID === $pageSlider) || (stripos($slug,'-plaza') !== false) ){
+		return true;
+	}else{
+		return false;
+	}
+}
 //--
 if( function_exists('acf_add_options_page') ) {	
 	acf_add_options_page(array(
@@ -64,29 +77,7 @@ function create_post_type() {
 			)
 		)
 	);
-	//--
-	register_post_type( 'datos-sociales',
-		array(
-			'labels' => array(
-				'name' => __( 'Datos Sociales', 'cadem' ),
-				'singular_name' => __( 'Datos Sociales', 'cadem' )
-			),
-			'menu_icon' => "",
-			'menu_position' => 5,
-			'public' => true,
-			'has_archive' => true,
-			'taxonomies' => array('category'),
-			'supports' => array (
-				'title',
-				'author',
-				'editor',
-				'page-attributes',
-				'thumbnail',
-				'custom-fields'
-			)
-		)
-	);
-	//--
+	//--	
 	register_post_type( 'multimedia',
 		array(
 			'labels' => array(
@@ -119,6 +110,7 @@ function create_post_type() {
 			'menu_position' => 5,
 			'public' => true,
 			'has_archive' => true,
+			'taxonomies' => array('category'),
 			'supports' => array (
 				'title',
 				'author',
@@ -130,6 +122,51 @@ function create_post_type() {
 		)
 	);
 	//--
+	/* Plaza Publica */
+	register_post_type( 'encuestas-plaza',
+		array(
+			'labels' => array(
+				'name' => __( 'Encuestas PP', 'cadem' ),
+				'singular_name' => __( 'Encuesta PP', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => true,
+			'taxonomies' => array('category'),
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	//--
+	register_post_type( 'prensa-plaza',
+		array(
+			'labels' => array(
+				'name' => __( 'Prensa PP', 'cadem' ),
+				'singular_name' => __( 'Prensa PP', 'cadem' )
+			),
+			'menu_icon' => "",
+			'menu_position' => 5,
+			'public' => true,
+			'has_archive' => true,
+			'taxonomies' => array('category'),
+			'supports' => array (
+				'title',
+				'author',
+				'editor',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields'
+			)
+		)
+	);
+	
 }
 function wpcodex_add_excerpt_support_for_cpt() {
  add_post_type_support( 'encuestas', 'excerpt' );
@@ -146,7 +183,7 @@ function custom_post_css() {
             font-family:  fontello !important;
             content: '\\e80a';
 		}
-		#adminmenu li#menu-posts-datos-sociales div.wp-menu-image:before {
+		#adminmenu li#menu-posts-encuestas-plaza div.wp-menu-image:before {
             font-family:  fontello !important;
             content: '\\e804';
 		}
@@ -155,6 +192,10 @@ function custom_post_css() {
             content: '\\e800';
 		}
 		#adminmenu li#menu-posts-prensa div.wp-menu-image:before {
+            font-family:  fontello !important;
+            content: '\\e805';
+		}
+		#adminmenu li#menu-posts-prensa-plaza div.wp-menu-image:before {
             font-family:  fontello !important;
             content: '\\e805';
 		}

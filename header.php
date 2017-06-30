@@ -59,4 +59,18 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
 <body <?php body_class(); ?> data-spy="scroll" data-target="nav.navbar-fixed-top">
 	<div class="load"><img src="<?php bloginfo('template_url'); ?>/img/cargador.svg" class="img-responsive animate-spin"></div>
 <div class="container-fluid gral-content anim">
-<?php get_template_part( 'nav', 'header' ); ?>
+<?php 
+	$slug = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	echo "<!-- SLUG:{$slug} -->";
+	$pp = is_PP($slug);
+	if($pp):
+		get_template_part( 'nav', 'plaza' );
+	else:
+		get_template_part( 'nav', 'header' ); 		
+	endif;
+?>
+<!-- // -->
+<div style="display: none;" id="trabaja-form">
+<img src="<?php bloginfo('template_url'); ?>/img/lightbox-trabaja.png" class="img-responsive">
+<?php Ninja_Forms()->display( 2 );	?>
+</div>
